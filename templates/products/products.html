@@ -1,6 +1,15 @@
 {% extends 'layouts/index.html' %}
 
 {% block content %}
+  <style type="text/css">
+        .products {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-left: 10%;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
     <style type="text/css">
     .products {
         width: 80%;
@@ -22,6 +31,9 @@
         {% for product in products %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <h6 class="card-subtitle">{{ products.created_date }}</h6>
+                    <a href="#" class="card-link">More</a>
                     <h5 class="card-title">{{ products.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ products.created_date }}</h6>
                    <a href="/posts/{{ product.id }}/" class="card-link">More</a>
