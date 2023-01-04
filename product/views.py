@@ -1,16 +1,18 @@
 from django.shortcuts import render, HttpResponse, redirect
+from .models import Product
 import datetime
 
 # Create your views here.
 
 
-def hello_world_view(request):
-    return HttpResponse('Hello its my project!')
+def main_view(request):
+    return render(request, 'layouts/index.html')
 
 
-def datetime_view(request):
-    return HttpResponse(datetime.datetime.now())
+def products_view(request):
+    if request.method == 'GET':
+        products = Product.objects.all()
 
-
-def goodbye_view(request):
-    return HttpResponse('Goodbye user!')
+        return render(request, 'products/products.html', context={
+            'products': products
+        })
