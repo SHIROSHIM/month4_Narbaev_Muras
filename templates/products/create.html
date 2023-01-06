@@ -2,7 +2,15 @@
 
 
 {% block content %}
-    <form action="">
+    <form action="/posts/create/" method="post">
+        {% csrf_token %}
+        <p>Title</p>
+        <input type="text" name="title">
 
+        <p>Description</p>
+        <textarea name="description" cols="30" rows="10"></textarea>
+
+        <p>Rate</p>
+        <input type="submit">
     </form>
-{% endblock %}
+{% endblock }%

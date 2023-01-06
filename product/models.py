@@ -1,4 +1,5 @@
 from django.db import models
+from .models import Product
 # Create your models here.
 
 
@@ -18,3 +19,15 @@ class Review(models.Model):
     text = models.TextField()
     created_date = models.DateField(auto_now=True)
     rate = models.FloatField()
+
+
+class ProductCreateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'description', 'price']
+
+
+class ReviewCreateForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['product', 'title', 'review', 'rating']
